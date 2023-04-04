@@ -227,7 +227,7 @@ public class Balloon_Movement : MonoBehaviour
             //WaitForSeconds(0.5f);
             //RecordScore();
             Destroy(gameObject);
-            scorekeeper.GetComponent<Scorekeeper>().AdvanceLevel();
+            //scorekeeper.GetComponent<Scorekeeper>().AdvanceLevel();
             if (level == 1 || level == 2)
             {
                 SceneManager.LoadScene("Level " + (level + 1));
