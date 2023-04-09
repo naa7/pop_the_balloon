@@ -6,18 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class Scorekeeper : MonoBehaviour
 {
-    [SerializeField] int score = 0;
+    [SerializeField] int score;
     const int DEFAULT_POINTS = 1000;
+    [SerializeField] Text nameText;
     [SerializeField] Text scoreText;
     [SerializeField] Text levelText;
-    [SerializeField] int levelNum;
+    [SerializeField] int level;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        levelNum = SceneManager.GetActiveScene().buildIndex;
-        //score = PersistentData.Instance.GetScore();
+        level = SceneManager.GetActiveScene().buildIndex;
+        score = PersistentData.Instance.GetScore();
+        name = PersistentData.Instance.GetName();
+        DisplayName();
         DisplayLevel();
         DisplayScore();
     }
@@ -28,18 +31,23 @@ public class Scorekeeper : MonoBehaviour
         
     }
 
+    public void DisplayName()
+    {
+        nameText.text = "Name: " + name;
+    }
+
     public void DisplayScore()
     {
-        scoreText.text = "Score: " + PersistentData.Instance.GetScore();
+        scoreText.text = "Score: " + score;
     }
 
     public void DisplayLevel()
     {
-        levelText.text = "Level: " + (levelNum);
+        levelText.text = "Level: " + level;
     }
     public void AdvanceLevel()
     {
-        levelNum += levelNum + 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void UpdateScore(int balloonSize)
     {

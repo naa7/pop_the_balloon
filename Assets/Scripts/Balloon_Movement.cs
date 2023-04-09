@@ -14,14 +14,12 @@ public class Balloon_Movement : MonoBehaviour
     [SerializeField] bool isFacingRight = true;
     [SerializeField] bool directionDown = true;
     [SerializeField] int level;
-    [SerializeField] Animator animator;
-
 
     [SerializeField] Vector2 theScale;
     [SerializeField] Rigidbody2D rigid;
     [SerializeField] GameObject balloon;
     [SerializeField] AudioSource audioPop;
-    [SerializeField] GameObject scorekeeper;
+    [SerializeField] GameObject controller;
     [SerializeField] GameObject player;
 
     //Hardcoded boundaries for Camera in Game
@@ -32,9 +30,6 @@ public class Balloon_Movement : MonoBehaviour
     Vector3 desiredVelocity;
     Vector3 steeringVelocity;
     Vector3 currentVelocity;
-    [SerializeField] float maxVelocity = 10.0f;
-    [SerializeField] float maxForce = 5.0f;
-    [SerializeField] int fleeDistance = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -52,12 +47,9 @@ public class Balloon_Movement : MonoBehaviour
         if (audioPop == null)
             audioPop = balloon.GetComponent<AudioSource>();
         speed = 4;
-        if (scorekeeper == null)
-            scorekeeper = GameObject.FindGameObjectWithTag("ScoreBoard");
-        if(animator == null)
-        {
-            animator = GetComponent<Animator>();
-        }
+        if (controller == null)
+            controller = GameObject.FindGameObjectWithTag("ScoreBoard");
+
         if (level == 1)
         {
             InvokeRepeating("GrowBalloon", 1.0f, .1f);
@@ -70,7 +62,7 @@ public class Balloon_Movement : MonoBehaviour
         if (level == 3)
         {
 
-            InvokeRepeating("GrowBalloon", 3.0f, .25f);
+            InvokeRepeating("GrowBalloon", 3.0f, .50f);
            
         }
     }
@@ -82,15 +74,15 @@ public class Balloon_Movement : MonoBehaviour
         movementUD = moveFactorUD;
         if (level == 1)
         {
-            speed = 10;
+            speed = 50;
         }
         else if (level == 2)
         {
-            speed = 15;
+            speed = 80;
         }
         else if (level  == 3)
         {
-            speed = 20;
+            speed = 110;
         }
 
     }
@@ -100,19 +92,25 @@ public class Balloon_Movement : MonoBehaviour
 
         if (level == 1)
         {
+            VerticalMovement();
             EasyMovement();
+            VerticalMovement();
             CheckSize();
         }
         else if (level == 2)
         {
+            VerticalMovement();
             EasyMovement();
             VerticalMovement();
             CheckSize();
         }
         else if (level == 3)
         {
-            FleeingMovement();
-            checkBoundsOnHard();
+            //FleeingMovement();
+            //checkBoundsOnHard();
+            VerticalMovement();
+            EasyMovement();
+            VerticalMovement();
             CheckSize();
         }
 
@@ -132,7 +130,7 @@ public class Balloon_Movement : MonoBehaviour
         if (theScale.x >= 1.0f)
         {
             Destroy(gameObject);
-            scorekeeper.GetComponent<Scorekeeper>().ZeroScore();
+            controller.GetComponent<Scorekeeper>().ZeroScore();
             SceneManager.LoadScene("Level " + level);
 
         }
@@ -151,47 +149,6 @@ public class Balloon_Movement : MonoBehaviour
             VerticalMovement();
         }
         
-    }
-    void checkBoundsOnHard()
-    {
-        if (transform.position.x <= leftBound - 1.0f)
-        {
-            transform.position = new Vector2(rightBound + .2f, transform.position.y);
-        }
-        else if (transform.position.x >= rightBound + 1.0f)
-        {
-            transform.position = new Vector2(leftBound - .2f, transform.position.y);
-        }
-        else if (transform.position.y >= upBound + 1.0f)
-        {
-            transform.position = new Vector2(transform.position.x, downBound - .2f);
-        }
-        else if (transform.position.y <= downBound - 1.0f)
-        {
-            transform.position = new Vector2(transform.position.x, upBound + .2f);
-        }
-    }
-
-    void FleeingMovement()
-    {
-        if (Vector3.Distance(transform.position, player.transform.position) < fleeDistance)
-        {
-            
-            desiredVelocity = (transform.position - player.transform.position).normalized;
-            desiredVelocity *= maxVelocity;
-
-            currentVelocity = rigid.velocity;
-            steeringVelocity = (desiredVelocity - currentVelocity);
-            steeringVelocity = Vector3.ClampMagnitude(steeringVelocity, maxForce);
-
-            steeringVelocity /= rigid.mass;
-
-            currentVelocity += steeringVelocity;
-            currentVelocity = Vector3.ClampMagnitude(currentVelocity, maxVelocity);
-
-            transform.position += currentVelocity * Time.deltaTime;
-            
-        }
     }
 
     //This method will control balloon vertical movement. Once balloon reaches edge, it will move up/down 1.0 unit
@@ -218,54 +175,34 @@ public class Balloon_Movement : MonoBehaviour
         }
 
     }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Rocket")
         {
             CancelInvoke();
             AudioSource.PlayClipAtPoint(audioPop.clip, transform.position);
-            //WaitForSeconds(0.5f);
-            //RecordScore();
+            RecordScore();
             Destroy(gameObject);
-            //scorekeeper.GetComponent<Scorekeeper>().AdvanceLevel();
+            controller.GetComponent<Scorekeeper>().AdvanceLevel();
             if (level == 1 || level == 2)
             {
                 SceneManager.LoadScene("Level " + (level + 1));
             }
             else if (level == 3)
             {
-                SceneManager.LoadScene("HighScores");
-            }
-            //StartCoroutine(DestroyBalloon());
-            
+                SceneManager.LoadScene("WinScene");
+                //SceneManager.LoadScene("HighScores");
+            }            
         }
         
-    }
-
-    //Used to wait until fire animation for baloon is finished before destroying balloon 
-    IEnumerator DestroyBalloon()
-    {
-        //animator.SetBool("OnFire", true);
-        yield return new WaitForSeconds(.5f);
-        //AudioSource.PlayClipAtPoint(audioPop.clip, transform.position);
-        //RecordScore();
-        Destroy(gameObject);
-        scorekeeper.GetComponent<Scorekeeper>().AdvanceLevel();
-        if (level == 1 || level == 2)
-        {
-            SceneManager.LoadScene("Level " + (level + 1));
-        }
-        else if (level == 3)
-        {
-            SceneManager.LoadScene("HighScores");
-        }
     }
     
 
     public void RecordScore()
     {
         int tempScore = (int)((theScale.x-.6f) * 500.0f);
-        scorekeeper.GetComponent<Scorekeeper>().UpdateScore(tempScore);
+        controller.GetComponent<Scorekeeper>().UpdateScore(tempScore);
     }
 
 

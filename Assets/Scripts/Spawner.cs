@@ -6,9 +6,9 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject rocket;
-    private float nextFire = 0.5f;
+    private float nextRocket = 0.5f;
     private float myTime = 0.0f;
-    private float fireDelta = 0.5f;
+    private float rocketDelta = 0.5f;
     
 
     void Start()
@@ -20,11 +20,11 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         myTime = myTime + Time.deltaTime;
-        if(Input.GetButton("Fire1") && myTime > nextFire)
+        if(Input.GetButton("Fire1") && myTime > nextRocket)
         {
-            nextFire = myTime + fireDelta;
+            nextRocket = myTime + rocketDelta;
             Spawn();
-            nextFire = nextFire - myTime;
+            nextRocket = nextRocket - myTime;
             myTime = 0.0f;
         }
     }

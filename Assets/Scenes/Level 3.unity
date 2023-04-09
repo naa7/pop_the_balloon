@@ -221,8 +221,8 @@ RectTransform:
   - {fileID: 1974080881}
   - {fileID: 170790315}
   - {fileID: 1915990351}
-  - {fileID: 641805886}
   - {fileID: 1602056430}
+  - {fileID: 641805886}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -388,8 +388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 200}
-  m_SizeDelta: {x: 200, y: 30}
+  m_AnchoredPosition: {x: 400.00003, y: 180}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507225028
 MonoBehaviour:
@@ -421,10 +421,10 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'Name:'
 --- !u!222 &507225029
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -551,7 +551,7 @@ RectTransform:
   m_Children:
   - {fileID: 1550189083}
   m_Father: {fileID: 108990520}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -669,6 +669,7 @@ MonoBehaviour:
   resumeButton: {fileID: 0}
   playerNameInput: {fileID: 0}
   level: 0
+  score: 0
 --- !u!1 &825964328
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +856,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &895121302
 MonoBehaviour:
@@ -1337,11 +1338,11 @@ RectTransform:
   m_Children:
   - {fileID: 1197174471}
   m_Father: {fileID: 108990520}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 150}
+  m_AnchoredPosition: {x: -100, y: 150}
   m_SizeDelta: {x: 160.09, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602056431
@@ -1455,6 +1456,7 @@ MonoBehaviour:
   resumeButton: {fileID: 0}
   playerNameInput: {fileID: 0}
   level: 0
+  score: 0
 --- !u!1 &1838768752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,8 +1470,8 @@ GameObject:
   - component: {fileID: 1838768756}
   - component: {fileID: 1838768757}
   - component: {fileID: 1838768758}
-  - component: {fileID: 1838768754}
   - component: {fileID: 1838768759}
+  - component: {fileID: 1838768760}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Balloon
@@ -1498,26 +1500,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &1838768754
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838768752}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1a707484b393417ea573b9bb2842001, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!4 &1838768755
 Transform:
   m_ObjectHideFlags: 0
@@ -1527,11 +1509,11 @@ Transform:
   m_GameObject: {fileID: 1838768752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: 3, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.5790277, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1838768756
 MonoBehaviour:
@@ -1553,12 +1535,11 @@ MonoBehaviour:
   isFacingRight: 1
   directionDown: 1
   level: 0
-  animator: {fileID: 1838768754}
   theScale: {x: 0, y: 0}
   rigid: {fileID: 0}
   balloon: {fileID: 1838768752}
   audioPop: {fileID: 1838768758}
-  scorekeeper: {fileID: 0}
+  controller: {fileID: 0}
   player: {fileID: 895121298}
   leftBound: -14.5
   rightBound: 14.5
@@ -1731,6 +1712,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1838768760
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838768752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1915990350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,6 +1884,7 @@ MonoBehaviour:
   resumeButton: {fileID: 0}
   playerNameInput: {fileID: 0}
   level: 0
+  score: 0
 --- !u!1 &1974080880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,7 +1898,7 @@ GameObject:
   - component: {fileID: 1974080882}
   m_Layer: 5
   m_Name: ScoreText
-  m_TagString: ScoreBoard
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2009,9 +2011,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  nameText: {fileID: 507225028}
   scoreText: {fileID: 1974080882}
   levelText: {fileID: 170790316}
-  levelNum: 0
+  level: 0
 --- !u!114 &2069166018
 MonoBehaviour:
   m_ObjectHideFlags: 0

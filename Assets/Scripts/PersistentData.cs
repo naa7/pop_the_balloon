@@ -10,7 +10,7 @@ public class PersistentData : MonoBehaviour
     const int startingScore = 0;
 
     public static PersistentData Instance;
-
+    
     private void Awake()
     {
         if(Instance == null)
@@ -37,9 +37,9 @@ public class PersistentData : MonoBehaviour
         
     }
 
-    public void SetName(string s)
+    public void SetName(string name)
     {
-        playerName = s;
+        playerName = name;
     }
     public void SetScore(int score)
     {

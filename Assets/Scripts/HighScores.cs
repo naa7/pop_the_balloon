@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HighScores : MonoBehaviour
 {
-    const int TOTAL_HIGH_SCORES = 3;
+    const int TOTAL_HIGH_SCORES = 5;
     const string NAME_KEY = "Player";
     const string SCORE_KEY = "Score";
 
