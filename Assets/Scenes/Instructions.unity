@@ -183,7 +183,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 01cd679a1b9ee48bf9c546f6ce2cb97e, type: 3}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -194,11 +194,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Instructions:\n\n- Use arrow keys to control the direction of the figher
-    jet. \n- Use left Ctrl to shoot missles towards the balloon.\n-  To get to the
-    next level, the balloon needs to be popped. \n\n\nLevels Difficulty:\n\nLevel
-    1: Easy, slow balloon\nLevel 2: Medium, faster balloon\nLevel 3: Hard, most fast
-    balloon\n\nNote: \n\nYou will lose points as the balloon gets larger."
+  m_Text: "\n\n\nInstructions:\n\n- Use arrow keys to control the direction of the
+    figher jet. \n- Use left Ctrl to shoot missles towards the balloon.\n-  To get
+    to the next level, the balloon needs to be popped. \n\n\nLevels Difficulty:\n\nLevel
+    1: Easy, slow balloon\nLevel 2: Medium, faster balloon\nLevel 3: Hard, fastest
+    balloon\n\n\nNote: \n\nYou will lose points as the balloon gets larger."
 --- !u!222 &289482392
 CanvasRenderer:
   m_ObjectHideFlags: 0

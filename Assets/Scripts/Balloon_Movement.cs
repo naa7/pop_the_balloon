@@ -191,7 +191,7 @@ public class Balloon_Movement : MonoBehaviour
             }
             else if (level == 3)
             {
-                SceneManager.LoadScene("WinScene");
+                SceneManager.LoadScene("EndScene");
                 //SceneManager.LoadScene("HighScores");
             }            
         }

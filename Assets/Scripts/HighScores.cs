@@ -22,12 +22,18 @@ public class HighScores : MonoBehaviour
 
         RecordPlayerScore();
         DisplayHighScores();
+        //ResetHighScores();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void ResetHighScores()
+    {
+        PlayerPrefs.DeleteAll();
     }
 
     void RecordPlayerScore()

@@ -1540,7 +1540,7 @@ Transform:
   m_GameObject: {fileID: 1838768752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: 3, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.5790277, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1576,9 +1576,6 @@ MonoBehaviour:
   rightBound: 14.5
   upBound: 5
   downBound: -5
-  maxVelocity: 10
-  maxForce: 5
-  fleeDistance: 15
 --- !u!58 &1838768757
 CircleCollider2D:
   m_ObjectHideFlags: 0
