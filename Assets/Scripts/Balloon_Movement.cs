@@ -181,7 +181,7 @@ public class Balloon_Movement : MonoBehaviour
         if (collision.gameObject.tag == "Rocket")
         {
             CancelInvoke();
-            AudioSource.PlayClipAtPoint(audioPop.clip, transform.position);
+            GetComponent<AudioSource>().Play();
             RecordScore();
             Destroy(gameObject);
             controller.GetComponent<Scorekeeper>().AdvanceLevel();
