@@ -31,11 +31,6 @@ public class HighScores : MonoBehaviour
         
     }
 
-    void ResetHighScores()
-    {
-        PlayerPrefs.DeleteAll();
-    }
-
     void RecordPlayerScore()
     {
         for (int i = 1; i < TOTAL_HIGH_SCORES + 1; i++)

@@ -27,9 +27,6 @@ public class Balloon_Movement : MonoBehaviour
     [SerializeField] float rightBound = 14.5f;
     [SerializeField] float upBound = 5.0f;
     [SerializeField] float downBound = -5.0f;
-    Vector3 desiredVelocity;
-    Vector3 steeringVelocity;
-    Vector3 currentVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -181,7 +178,8 @@ public class Balloon_Movement : MonoBehaviour
         if (collision.gameObject.tag == "Rocket")
         {
             CancelInvoke();
-            GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(audioPop.clip, transform.position);
+            //GetComponent.<AudioSource>().Play();
             RecordScore();
             Destroy(gameObject);
             controller.GetComponent<Scorekeeper>().AdvanceLevel();

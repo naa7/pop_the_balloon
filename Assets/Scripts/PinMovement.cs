@@ -24,7 +24,7 @@ public class PinMovement : MonoBehaviour
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
         movement = 2.0f;
-        speed = 20;
+        speed = 30;
         isFlipped = false;
 
         isFacingRight = player.GetComponent<Player_Movement>().getDirection();

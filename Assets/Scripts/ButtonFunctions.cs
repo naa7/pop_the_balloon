@@ -9,6 +9,7 @@ public class ButtonFunctions : MonoBehaviour
     [SerializeField] string playerName;
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject resumeButton;
+    [SerializeField] GameObject controller;
     [SerializeField] InputField playerNameInput;
     [SerializeField] int level;
     [SerializeField] int score;
@@ -23,8 +24,9 @@ public class ButtonFunctions : MonoBehaviour
         if (resumeButton == null)
         {
             resumeButton = GameObject.FindGameObjectWithTag("ResumeButton");
-        }
+        }  
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,12 @@ public class ButtonFunctions : MonoBehaviour
     }
     public void HighScores()
     {
+        SceneManager.LoadScene("HighScores");
+    }
+
+    public void ResetHighScores()
+    {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("HighScores");
     }
 
