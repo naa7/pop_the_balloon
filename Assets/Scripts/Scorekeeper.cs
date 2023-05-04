@@ -52,7 +52,16 @@ public class Scorekeeper : MonoBehaviour
     public void UpdateScore(int balloonSize)
     {
 
-        score += DEFAULT_POINTS - (balloonSize);
+        score += DEFAULT_POINTS - Mathf.Abs(balloonSize);
+        PersistentData.Instance.SetScore(score);
+        DisplayScore();
+        
+    }
+
+    public void UpdateScoreNegative(int penality)
+    {
+
+        score -=  penality;
         PersistentData.Instance.SetScore(score);
         DisplayScore();
         

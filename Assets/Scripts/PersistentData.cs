@@ -27,7 +27,7 @@ public class PersistentData : MonoBehaviour
     void Start()
     {
         playerScore = startingScore;
-        playerName = "";
+        playerName = "Player";
         
     }
 

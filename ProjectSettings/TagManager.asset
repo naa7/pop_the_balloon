@@ -10,15 +10,16 @@ TagManager:
   - ScoreBoard
   - Volume
   - Rocket
+  - Balloon2
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - Balloon
+  - Rocket
   - 
   - 
   - 

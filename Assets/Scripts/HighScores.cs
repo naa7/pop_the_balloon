@@ -22,7 +22,6 @@ public class HighScores : MonoBehaviour
 
         RecordPlayerScore();
         DisplayHighScores();
-        //ResetHighScores();
     }
 
     // Update is called once per frame
@@ -61,6 +60,7 @@ public class HighScores : MonoBehaviour
             }
         }
     }
+    
     void DisplayHighScores()
     {
         for(int i = 0; i < TOTAL_HIGH_SCORES; i++)

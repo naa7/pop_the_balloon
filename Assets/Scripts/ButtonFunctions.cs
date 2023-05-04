@@ -12,7 +12,7 @@ public class ButtonFunctions : MonoBehaviour
     [SerializeField] GameObject controller;
     [SerializeField] InputField playerNameInput;
     [SerializeField] int level;
-    [SerializeField] int score;
+    [SerializeField] int score = 0;
 
     void Awake()
     {
@@ -31,8 +31,7 @@ public class ButtonFunctions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // if (level == 1 || level == 2 || level == 3)
-        //     resumeButton.SetActive(true);
+        
     }
 
     // Update is called once per frame
@@ -44,7 +43,6 @@ public class ButtonFunctions : MonoBehaviour
     public void PlayGame()
     {
         playerName = playerNameInput.text;
-        score = 0;
         PersistentData.Instance.SetName(playerName);
         PersistentData.Instance.SetScore(score);
         SceneManager.LoadScene("Level 1");
@@ -64,10 +62,18 @@ public class ButtonFunctions : MonoBehaviour
         SceneManager.LoadScene("HighScores");
     }
 
+     public void Settings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
+
     public void ResetHighScores()
     {
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("HighScores");
+        PersistentData.Instance.SetScore(score);
+        PersistentData.Instance.SetName("");
+
+
     }
 
     public void PauseGame()

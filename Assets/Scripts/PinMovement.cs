@@ -9,7 +9,6 @@ public class PinMovement : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] GameObject controller;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject balloon;
     [SerializeField] bool isFacingRight;
     [SerializeField] bool isFlipped;
 
@@ -24,7 +23,7 @@ public class PinMovement : MonoBehaviour
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
         movement = 2.0f;
-        speed = 30;
+        speed = 20;
         isFlipped = false;
 
         isFacingRight = player.GetComponent<Player_Movement>().getDirection();
@@ -68,7 +67,6 @@ public class PinMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        //controller.GetComponent<Scorekeeper>().UpdateScore();
         Destroy(gameObject);
     }
 }

@@ -19,6 +19,7 @@ public class Balloon_Movement : MonoBehaviour
     [SerializeField] Rigidbody2D rigid;
     [SerializeField] GameObject balloon;
     [SerializeField] AudioSource audioPop;
+    public AudioClip pop;
     [SerializeField] GameObject controller;
     [SerializeField] GameObject player;
 
@@ -71,15 +72,15 @@ public class Balloon_Movement : MonoBehaviour
         movementUD = moveFactorUD;
         if (level == 1)
         {
-            speed = 50;
+            speed = 20;
         }
         else if (level == 2)
         {
-            speed = 80;
+            speed = 50;
         }
         else if (level  == 3)
         {
-            speed = 110;
+            speed = 80;
         }
 
     }
@@ -103,8 +104,6 @@ public class Balloon_Movement : MonoBehaviour
         }
         else if (level == 3)
         {
-            //FleeingMovement();
-            //checkBoundsOnHard();
             VerticalMovement();
             EasyMovement();
             VerticalMovement();
@@ -113,7 +112,7 @@ public class Balloon_Movement : MonoBehaviour
 
     }
 
-    void EasyMovement()
+    public void EasyMovement()
     {
         rigid.velocity = new Vector2(movementLR * speed, rigid.velocity.y);
         if (movementLR < 0 && isFacingRight || movementLR > 0 && !isFacingRight)
@@ -126,7 +125,7 @@ public class Balloon_Movement : MonoBehaviour
     {
         if (theScale.x >= 1.0f)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
             controller.GetComponent<Scorekeeper>().ZeroScore();
             SceneManager.LoadScene("Level " + level);
 
@@ -148,9 +147,7 @@ public class Balloon_Movement : MonoBehaviour
         
     }
 
-    //This method will control balloon vertical movement. Once balloon reaches edge, it will move up/down 1.0 unit
-    //The balloon will reverse 
-    void VerticalMovement()
+    public void VerticalMovement()
     {
         if (transform.position.y + moveFactorUD > upBound && !directionDown)
         {
@@ -173,28 +170,19 @@ public class Balloon_Movement : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Rocket")
         {
-            CancelInvoke();
-            AudioSource.PlayClipAtPoint(audioPop.clip, transform.position);
-            //GetComponent.<AudioSource>().Play();
             RecordScore();
-            Destroy(gameObject);
+            audioPop.PlayOneShot(pop);
+            yield return new WaitForSeconds(0.3f);
+            Destroy(this.gameObject);
             controller.GetComponent<Scorekeeper>().AdvanceLevel();
-            if (level == 1 || level == 2)
-            {
-                SceneManager.LoadScene("Level " + (level + 1));
-            }
-            else if (level == 3)
-            {
-                SceneManager.LoadScene("EndScene");
-                //SceneManager.LoadScene("HighScores");
-            }            
         }
         
     }
+
     
 
     public void RecordScore()

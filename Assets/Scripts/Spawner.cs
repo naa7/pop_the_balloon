@@ -10,7 +10,6 @@ public class Spawner : MonoBehaviour
     private float myTime = 0.0f;
     private float rocketDelta = 0.5f;
     
-
     void Start()
     {
         if(player == null)
@@ -31,6 +30,7 @@ public class Spawner : MonoBehaviour
 
     void FixedUpdate()
     {
+        
     }
     void Spawn()
     {
@@ -42,6 +42,4 @@ public class Spawner : MonoBehaviour
         Instantiate(rocket, position, Quaternion.identity);
 
     }
-
-
 }
