@@ -59,9 +59,7 @@ public class Balloon_Movement : MonoBehaviour
 
         if (level == 3)
         {
-
             InvokeRepeating("GrowBalloon", 3.0f, .50f);
-           
         }
     }
 
@@ -128,6 +126,7 @@ public class Balloon_Movement : MonoBehaviour
             Destroy(this.gameObject);
             controller.GetComponent<Scorekeeper>().ZeroScore();
             SceneManager.LoadScene("Level " + level);
+            
 
         }
     }
@@ -182,8 +181,6 @@ public class Balloon_Movement : MonoBehaviour
         }
         
     }
-
-    
 
     public void RecordScore()
     {

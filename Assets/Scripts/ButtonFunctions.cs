@@ -24,14 +24,15 @@ public class ButtonFunctions : MonoBehaviour
         if (resumeButton == null)
         {
             resumeButton = GameObject.FindGameObjectWithTag("ResumeButton");
-        }  
+        } 
+
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -46,6 +47,14 @@ public class ButtonFunctions : MonoBehaviour
         PersistentData.Instance.SetName(playerName);
         PersistentData.Instance.SetScore(score);
         SceneManager.LoadScene("Level 1");
+    }
+
+    public void nextLevel() {
+        if (level == 5)
+            SceneManager.LoadScene("Level 2");
+        else {
+            SceneManager.LoadScene("Level 3");
+        }
     }
 
     public void MainMenu()
@@ -72,8 +81,6 @@ public class ButtonFunctions : MonoBehaviour
         PlayerPrefs.DeleteAll();
         PersistentData.Instance.SetScore(score);
         PersistentData.Instance.SetName("");
-
-
     }
 
     public void PauseGame()

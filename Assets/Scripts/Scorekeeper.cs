@@ -47,8 +47,17 @@ public class Scorekeeper : MonoBehaviour
     }
     public void AdvanceLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (level == 1) {
+            SceneManager.LoadScene("sceneTransition1");
+        }
+        else if (level == 2) {
+            SceneManager.LoadScene("sceneTransition2");
+        }
+        else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
+
     public void UpdateScore(int balloonSize)
     {
 
